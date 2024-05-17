@@ -10,35 +10,37 @@
 8-Mono Alphabet with password
 */
 // =================================Encryption Caeaer================================================================
-function Encrypt_Caesar($text, $shift)
-{
+ function Encrypt_Caesar($text, $shift){
     $result = '';
     $text = strtoupper($text);
-    for ($i = 0; $i < strlen($text); $i++) {
-        if (ctype_alpha($text[$i])) {
-            $char = chr((ord($text[$i]) - 65 + $shift) % 25 + 65);
-        } else {
-            /*Nothing*/
+    for($i = 0; $i < strlen($text); $i++){
+        $char = $text[$i];
+        if(ctype_alpha($char)){
+            $new_char = chr((ord($char) - 65 + $shift) % 26 + 65);
+        } 
+        else{
+            $new_char = $char;
         }
+        $result .= $new_char;
     }
-    $result .= $char;
-    return $result;
+    return strtolower($result);
 }
 //===================================================================================================================
 // =================================Decryption Caeaer================================================================
-function Decrypt_Caesar($text, $shift)
-{
+function Encrypt_Caesar($text, $shift){
     $result = '';
     $text = strtoupper($text);
-    for ($i = 0; $i < strlen($text); $i++) {
-        if (ctype_alpha($text[$i])) {
-            $char = chr((ord($text[$i]) - 65 + $shift + 26) % 25 + 65);
-        } else {
-            /*Nothing*/
+    for($i = 0; $i < strlen($text); $i++){
+        $char = $text[$i];
+        if(ctype_alpha($char)){
+            $new_char = chr(((ord($char) - 65 + $shift + 26) % 26) + 65);
+        } 
+        else{
+            $new_char = $char;
         }
+        $result .= $new_char;
     }
-    $result .= $char;
-    return $result;
+    return strtolower($result);
 }
 //===================================================================================================================
 // =================================Encryption Mono==================================================================
